@@ -7,7 +7,7 @@ node_modules/*
 npm init
 npm i express dotenv mongoose jsonwebtoken bcryptjs cookie-parser express-mongo-sanitize helmet express-xss-sanitizer express-rate-limit hpp cors
 npm i -D nodemon
-npm i mysql 
+npm i mysql
 // ถ้ามี error ลอง mysql2
 npm install --save swagger-jsdoc@6.0.0
 npm install --save swagger-ui-express
