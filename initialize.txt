@@ -1,5 +1,7 @@
 0% Go Go Go **Start with Ass10
 
+WRK 
+
 node_modules/*
 -> install ตามด้านล่าง
 ืnpm init
