@@ -1,12 +1,12 @@
 const express = require('express');
 const {
-	getHospitals,
-	getHospital,
-	createHospital,
-	updateHospital,
-	deleteHospital,
+	getCoWorks,
+	getCoWork,
+	createCoWork,
+	updateCoWork,
+	deleteCoWork,
 	getVacCenters,
-} = require('../controllers/hospitals');
+} = require('../controllers/coWorks');
 
 //Include other resource routers
 const appointmentRouter = require('./appointments');
@@ -16,19 +16,19 @@ const router = express.Router();
 const {protect, authorize} = require('../middleware/auth');
 
 //Re-route into other resource routers
-router.use('/:hospitalId/appointments/', appointmentRouter);
+router.use('/:coWorkId/appointments/', appointmentRouter);
 
 router.route('/vacCenters').get(getVacCenters);
 
 router
 	.route('/')
-	.get(getHospitals)
-	.post(protect, authorize('admin'), createHospital);
+	.get(getCoWorks)
+	.post(protect, authorize('admin'), createCoWork);
 router
 	.route('/:id')
-	.get(getHospital)
-	.put(protect, authorize('admin'), updateHospital)
-	.delete(protect, authorize('admin'), deleteHospital);
+	.get(getCoWork)
+	.put(protect, authorize('admin'), updateCoWork)
+	.delete(protect, authorize('admin'), deleteCoWork);
 
 module.exports = router;
 
@@ -36,7 +36,7 @@ module.exports = router;
  * @swagger
  * components:
  *  schemas:
- *    Hospital:
+ *    CoWork:
  *      type: object
  *      required:
  *      - name
@@ -45,14 +45,14 @@ module.exports = router;
  *        id:
  *          type: string
  *          format: uuid
- *          description: The auto-generated id of the hospital
+ *          description: The auto-generated id of the coWork
  *          example: 65d329cf1e100dca68e70016
  *        ลำดับ:
  *          type: string
  *          description: Ordinal number
  *        name:
  *          type: string
- *          description: Hospital name
+ *          description: CoWork name
  *        address:
  *          type: string
  *          description: House No., Street, Road
@@ -81,113 +81,110 @@ module.exports = router;
  *        postalcode: 10700
  *        tel: 02-4340117
  *        region: กรุงเทพมหานคร (Bangkok)
- * tags:
- *  name: Hospitals
- *  description: The hospitals managing API
  */
 
 /**
  * @swagger
  * tags:
- *  name: Hospitals
- *  description: The hospitals managing API
+ *  name: CoWorks
+ *  description: The coWorks managing API
  */
 
 /**
  * @swagger
- * /hospitals:
+ * /coWorks:
  *  get:
- *    summary: Returns the list of all the hospitals
- *    tags: [Hospitals]
+ *    summary: Returns the list of all the coWorks
+ *    tags: [CoWorks]
  *    responses:
  *      200:
- *        description: The list of the hospitals
+ *        description: The list of the coWorks
  *        content:
  *          application/json:
  *            schema:
  *              type: array
  *              items:
- *                $ref: '#/components/schemas/Hospital'
+ *                $ref: '#/components/schemas/CoWork'
  *  post :
- *    summary : Create a new hospital
- *    tags : [Hospitals]
+ *    summary : Create a new coWork
+ *    tags : [CoWorks]
  *    requestBody :
  *      required : true
  *      content :
  *        application/json :
  *          schema :
- *            $ref : '#/components/schemas/Hospital'
+ *            $ref : '#/components/schemas/CoWork'
  *    responses :
  *      201 :
- *        description : The hospital was successfully creadted
+ *        description : The coWork was successfully creadted
  *        content :
  *          application/json :
  *            schema :
- *              $ref : '#/components/schemas/Hospital'
+ *              $ref : '#/components/schemas/CoWork'
  *      500 :
  *        description : Some server error
  *
- * /hospitals/{id}:
+ * /coWorks/{id}:
  *  get:
- *    summary: Get the hospital by id
- *    tags: [Hospitals]
+ *    summary: Get the coWork by id
+ *    tags: [CoWorks]
  *    parameters:
  *      - in: path
  *        name: id
  *        schema:
  *          type: string
  *        require: true
- *        description: The hospital id
+ *        description: The coWork id
  *    responses:
  *      200:
- *        description: The hospital description by id
+ *        description: The coWork description by id
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/Hospital'
+ *              $ref: '#/components/schemas/CoWork'
  *      404:
- *        description: The hospital was not found
+ *        description: The coWork was not found
  *  put:
- *    summary: Update the hospital by the id
- *    tags: [Hospitals]
+ *    summary: Update the coWork by the id
+ *    tags: [CoWorks]
  *    parameters:
  *      - in: path
  *        name: id
  *        schema:
  *          type: string
  *        require: true
- *        description: The hospital id
+ *        description: The coWork id
  *    requestBody:
  *      required: true
  *      content:
  *        application/json:
  *          schema:
- *            $ref: '#/components/schemas/Hospital'
+ *            $ref: '#/components/schemas/CoWork'
  *    responses:
  *      200:
- *        description: The hospital was updated
+ *        description: The coWork was updated
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/Hospital'
+ *              $ref: '#/components/schemas/CoWork'
  *      404:
- *        description: The hospital was not found
+ *        description: The coWork was not found
  *      500:
  *        description: Some error happened
  *  delete:
- *    summary: Remove the hospital by id
- *    tags: [Hospitals]
+ *    summary: Remove the coWork by id
+ *    tags: [CoWorks]
  *    parameters:
  *      - in: path
  *        name: id
  *        schema:
  *          type: string
  *        require: true
- *        description: The hospital id
+ *        description: The coWork id
  *    responses:
  *      200:
- *        description: The hospital was deleted
+ *        description: The coWork was deleted
  *      404:
- *        description: The hospital was not found
+ *        description: The coWork was not found
  *
  */
