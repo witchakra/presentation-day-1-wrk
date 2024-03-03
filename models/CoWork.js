@@ -33,9 +33,13 @@ const CoWorkSchema = new mongoose.Schema(
 		tel: {
 			type: String,
 		},
-		OpenClose_time:{
-			type: String,
-			required:[true, 'Please add OpenClose_time'],
+		Open_time:{
+			type: Date,
+			required:[true, 'Please add Open_time'],
+		},
+		Close_time:{
+			type: Date,
+			required:[true, 'Please add Close_time'],
 		},
 	},
 	{
