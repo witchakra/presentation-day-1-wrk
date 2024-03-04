@@ -18,12 +18,16 @@ const AppointmentSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now,
 	},
-	startTime:{
-		type: Date,
+	date: {
+        type:String,
+        required : true
+    },
+    startTime:{
+		type: String,
 		required : true
 	},
 	endTime:{
-		type: Date,
+		type: String,
 		required : true
 	},
 });

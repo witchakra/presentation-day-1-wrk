@@ -94,10 +94,23 @@ exports.addAppointment = async (req, res, next) => {
 				message: `The user with ID ${req.user.id} has already made 3 appointments`,
 			});
 		}
+		if(req.body.startTime < coWork.Open_time){
+			return res.status(400).json({
+				success: false,
+				message: `startTime earlier than open time ${coWork.Open_time}`
+			});
+		}
+		if(req.body.endTime > coWork.Close_time){
+			return res.status(400).json({
+				success: false,
+				message: `endTime later than close time ${coWork.Close_time}`
+			});
+		}
+
 		if(req.body.startTime >= req.body.endTime){
 			return res.status(400).json({
 				success: false,
-				message: `startTime and endTime is invalid value`,
+				message: 'startTime and endTime is invalid value'
 			});
 		}
 		const appointment = await Appointment.create(req.body);
