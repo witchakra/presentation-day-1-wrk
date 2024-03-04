@@ -52,7 +52,7 @@ app.use(cors());
 
 app.use('/api/v1/coWork', coWorks);
 app.use('/api/v1/auth', auth);
-app.use('/api/v1/reservations', reservations);
+app.use('/api/v1/reservation', reservations);
 
 const PORT = process.env.PORT;
 
