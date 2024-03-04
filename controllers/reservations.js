@@ -113,8 +113,18 @@ exports.addReservation = async (req, res, next) => {
 				message: 'startTime and endTime is invalid value'
 			});
 		}
-		const reservation = await Reservation.create(req.body);
-		res.status(200).json({success: true, data: reservation});
+
+		let findtable = await Reservation.find({table: req.body.table});
+
+		console.log(findtable);
+
+		if(findtable.length === 0){
+			const reservation = await Reservation.create(req.body);
+			return res.status(200).json({success: true, data: reservation});
+		}
+
+		res.status(400).json({success: false,msg:'this table is already reserved'});
+
 	} catch (err) {
 		console.log(err.stack);
 		return res

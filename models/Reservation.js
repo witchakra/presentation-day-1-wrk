@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
 const ReservationSchema = new mongoose.Schema({
-	apptDate: {
-		type: Date,
-		required: true,
-	},
 	user: {
 		type: mongoose.Schema.ObjectId,
 		ref: 'User',
@@ -30,6 +26,10 @@ const ReservationSchema = new mongoose.Schema({
 		type: String,
 		required : true
 	},
+	table :{
+		type:String,
+		required :true
+	}
 });
 
 module.exports = mongoose.model('Reservation', ReservationSchema);
