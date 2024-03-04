@@ -48,20 +48,20 @@ const CoWorkSchema = new mongoose.Schema(
 	}
 );
 
-// Cascade delete appointments when a coWork is deleted
+// Cascade delete reservations when a coWork is deleted
 CoWorkSchema.pre(
 	'deleteOne',
 	{document: true, query: false},
 	async function (next) {
-		console.log(`Appointments being removed from coWork ${this._id}`);
-		await this.model('Appointment').deleteMany({coWork: this._id});
+		console.log(`Reservations being removed from coWork ${this._id}`);
+		await this.model('Reservation').deleteMany({coWork: this._id});
 		next();
 	}
 );
 
 // Reverse populate with virtuals
-CoWorkSchema.virtual('appointments', {
-	ref: 'Appointment',
+CoWorkSchema.virtual('reservations', {
+	ref: 'Reservation',
 	localField: '_id',
 	foreignField: 'coWork',
 	justOne: false,

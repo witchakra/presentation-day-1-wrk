@@ -23,7 +23,7 @@ exports.getCoWorks = async (req, res, next) => {
 		(match) => `$${match}`
 	);
 	// Finding resource
-	query = CoWork.find(JSON.parse(queryStr)).populate('appointments');
+	query = CoWork.find(JSON.parse(queryStr)).populate('reservations');
 
 	// Select Fields
 	if (req.query.select) {

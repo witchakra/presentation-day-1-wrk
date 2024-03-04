@@ -20,7 +20,7 @@ connectDB();
 const hospitals = require('./routes/hospitals');
 const app = express();
 const auth = require('./routes/auth');
-const appointments = require('./routes/appointments');
+const reservations = require('./routes/reservations');
 
 // Body parser
 app.use(express.json());
@@ -52,7 +52,7 @@ app.use(cors());
 
 app.use('/api/v1/hospitals', hospitals);
 app.use('/api/v1/auth', auth);
-app.use('/api/v1/appointments', appointments);
+app.use('/api/v1/reservations', reservations);
 
 const PORT = process.env.PORT;
 
