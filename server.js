@@ -50,7 +50,7 @@ app.use(hpp());
 //Enable CORS
 app.use(cors());
 
-app.use('/api/v1/coWorks', coWorks);
+app.use('/api/v1/coWork', coWorks);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/reservations', reservations);
 
