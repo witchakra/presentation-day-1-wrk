@@ -17,7 +17,7 @@ dotenv.config({path: './config/config.env'});
 connectDB();
 
 // Route
-const hospitals = require('./routes/hospitals');
+const coWorks = require('./routes/coWork');
 const app = express();
 const auth = require('./routes/auth');
 const reservations = require('./routes/reservations');
@@ -50,7 +50,7 @@ app.use(hpp());
 //Enable CORS
 app.use(cors());
 
-app.use('/api/v1/hospitals', hospitals);
+app.use('/api/v1/coWorks', coWorks);
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/reservations', reservations);
 
