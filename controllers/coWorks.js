@@ -1,20 +1,4 @@
 const CoWork = require('../models/CoWork');
-const CoBranch = require('../models/CoBranch');
-
-// @desc    Get Coworking Space Branchs
-// @route   GET /api/v1/coworks/coBranchs
-// @access  Public
-exports.getCoBranchs = (req, res, next) => {
-	CoBranch.getAll((err, data) => {
-		if (err)
-			res.status(500).send({
-				message:
-					err.message ||
-					'Some error occurred while retrieving Coworking Space Branchs.',
-			});
-		else res.send(data);
-	});
-};
 
 // @desc    Get all coworks
 // @route   GET /api/v1/coworks

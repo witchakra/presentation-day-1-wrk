@@ -5,7 +5,6 @@ const {
 	createCoWork,
 	updateCoWork,
 	deleteCoWork,
-	getCoBranchs,
 } = require('../controllers/coWorks');
 
 //Include other resource routers
@@ -17,8 +16,6 @@ const {protect, authorize} = require('../middleware/auth');
 
 //Re-route into other resource routers
 router.use('/:coWorkId/appointments/', appointmentRouter);
-
-router.route('/vacCenters').get(getCoBranchs);
 
 router
 	.route('/')
