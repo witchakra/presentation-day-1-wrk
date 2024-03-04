@@ -113,6 +113,8 @@ exports.addReservation = async (req, res, next) => {
 				message: 'startTime and endTime is invalid value'
 			});
 		}
+		const appointment = await Appointment.create(req.body);
+		res.status(200).json({success: true, data: appointment});
 
 	} catch (err) {
 		console.log(err.stack);
